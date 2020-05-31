@@ -161,7 +161,8 @@ if __name__ == '__main__':
     model = nn.DataParallel(model_single)
     # model = model_single
     model = model.to(device)
-
+    #model.load_state_dict(torch.load('PATH', map_location=lambda storage, loc: storage)) 
     optimizer = optim.Adam(model.parameters(), lr=args.lr)
+    #optimizer.state_dict(torch.load('PATH', map_location=lambda storage, loc: storage))
 
     train(args, model, optimizer)
